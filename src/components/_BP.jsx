@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 const propTypes = {};
 
-function Boilerplate() {
+const Boilerplate = () => {
   return (
     <BoilerplateWrap>
       <p>Hi i&apos;m Boilerplate!</p>
