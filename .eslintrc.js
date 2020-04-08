@@ -8,4 +8,7 @@ module.exports = {
   plugins: [
     'jsx-a11y',
   ],
+  rules: {
+    'import/extensions': 0,
+  },
 };
