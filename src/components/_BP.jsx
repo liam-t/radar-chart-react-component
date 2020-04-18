@@ -3,6 +3,7 @@ import PT from 'prop-types';
 import styled from 'styled-components';
 
 const propTypes = {};
+const defaultProps = {};
 
 const Boilerplate = () => {
   return (
@@ -12,6 +13,7 @@ const Boilerplate = () => {
   );
 }
 Boilerplate.propTypes = propTypes;
+Boilerplate.defaultProps = defaultProps;
 
 export default Boilerplate;
 
