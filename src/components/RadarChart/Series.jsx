@@ -18,25 +18,17 @@ const defaultProps = {
 };
 
 
-const getPoints = (axes, radius, scaleGen, angleSliceRadians) => {
-  const axesWithScale = axes.map((data) => ({
-    ...data,
-    rScale: scaleGen(data.valDomain, [0, radius]),
-  }));
-  const points = axesWithScale.map(({ val, valDomain, rScale }, i) => {
-    return [angleSliceRadians * i, rScale(val)];
-  });
-  return points;
-};
+const getPoints = (axes, radius, scaleGen, angleSliceRadians) => (
+  axes.map(({ val, valDomain }, i) => (
+    [angleSliceRadians * i, scaleGen(valDomain, [0, radius])(val)]
+  ))
+);
 
 const getPath = (points) => lineRadial()(points);
 
 
 const Series = ({ data, radius, color }) => {
-  const {
-    name,
-    axes,
-  } = data;
+  const { axes } = data;
   const angleSliceRadians = (Math.PI * 2) / axes.length;
   const points = getPoints(axes, radius, scaleLinear, angleSliceRadians);
   const path = getPath(points);

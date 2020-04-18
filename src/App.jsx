@@ -70,7 +70,7 @@ function App() {
   return (
     <AppWrap>
       <ChartWrap>
-        <RadarChart name="Test Name" series={data} />
+        <RadarChart name="Radar Chart" series={data} />
       </ChartWrap>
     </AppWrap>
   );

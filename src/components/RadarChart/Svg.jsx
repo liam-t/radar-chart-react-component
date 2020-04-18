@@ -30,7 +30,14 @@ const Svg = ({
         <rect
           width={innerWidth}
           height={innerWidth}
-          stroke="black"
+          stroke="lightblue"
+          fill="none"
+        />
+        <circle
+          r={innerWidth / 2}
+          cx={innerWidth / 2}
+          cy={innerWidth / 2}
+          stroke="lightgreen"
           fill="none"
         />
         <SeriesContainer>
