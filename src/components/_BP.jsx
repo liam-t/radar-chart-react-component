@@ -1,6 +1,6 @@
 import React from 'react';
 import PT from 'prop-types';
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 
 const propTypes = {};
 const defaultProps = {};
@@ -11,7 +11,7 @@ const Boilerplate = () => {
       <p>Hi i&apos;m Boilerplate!</p>
     </BoilerplateWrap>
   );
-}
+};
 Boilerplate.propTypes = propTypes;
 Boilerplate.defaultProps = defaultProps;
 
