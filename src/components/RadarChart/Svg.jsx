@@ -4,6 +4,7 @@ import styled from 'styled-components/macro';
 import serieDef from 'models/serie';
 import Series from './Series';
 import Axes from './Axes';
+import Background from './Background';
 
 const propTypes = {
   width: PT.number.isRequired,
@@ -17,6 +18,9 @@ const propTypes = {
   lineOffset: PT.number.isRequired,
   lineOpacity: PT.number.isRequired,
   lineStrokeDasharray: PT.string.isRequired,
+  backgroundFill: PT.string.isRequired,
+  backgroundStroke: PT.string.isRequired,
+  backgroundStrokeWidth: PT.number.isRequired,
 };
 const defaultProps = {};
 
@@ -29,6 +33,9 @@ const Svg = ({
   lineOffset,
   lineOpacity,
   lineStrokeDasharray,
+  backgroundFill,
+  backgroundStroke,
+  backgroundStrokeWidth,
 }) => {
   const padding = {
     top: 20,
@@ -43,6 +50,13 @@ const Svg = ({
   return (
     <SvgEl width={width} height={height}>
       <PadTransform transform={`translate(${padding.left} ${padding.top})`}>
+        <Background
+          axes={series[axesSeriesIndex].axes}
+          radius={radius}
+          fill={backgroundFill}
+          stroke={backgroundStroke}
+          strokeWidth={backgroundStrokeWidth}
+        />
         <SeriesContainer>
           {series.map((data) => (
             <Series

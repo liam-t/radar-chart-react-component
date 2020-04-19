@@ -16,6 +16,9 @@ const propTypes = {
   lineOffset: PT.number,
   lineOpacity: PT.number,
   lineStrokeDasharray: PT.string,
+  backgroundFill: PT.string,
+  backgroundStroke: PT.string,
+  backgroundStrokeWidth: PT.number,
 };
 const defaultProps = {
   name: '',
@@ -24,6 +27,9 @@ const defaultProps = {
   lineOffset: 0,
   lineOpacity: 0.25,
   lineStrokeDasharray: '5',
+  backgroundFill: 'none',
+  backgroundStroke: 'rgba(0, 0, 0, 0.2)',
+  backgroundStrokeWidth: 1,
 };
 
 const RadarChart = ({
@@ -34,6 +40,9 @@ const RadarChart = ({
   lineOffset,
   lineOpacity,
   lineStrokeDasharray,
+  backgroundFill,
+  backgroundStroke,
+  backgroundStrokeWidth,
 }) => {
   return (
     <RadarChartWrap>
@@ -51,6 +60,9 @@ const RadarChart = ({
                 lineOffset={lineOffset}
                 lineOpacity={lineOpacity}
                 lineStrokeDasharray={lineStrokeDasharray}
+                backgroundFill={backgroundFill}
+                backgroundStroke={backgroundStroke}
+                backgroundStrokeWidth={backgroundStrokeWidth}
               />
             )}
           </Inner>
