@@ -25,8 +25,8 @@ const Labels = ({ axes, angleSliceRadians, radius }) => {
         };
         const getDominantBaseline = () => {
           const yPos = y + radius;
-          if (yPos < radius * 0.1) return 'hanging';
-          if (yPos > radius * 1.9) return 'no-change';
+          if (yPos < radius * 0.2) return 'hanging';
+          if (yPos > radius * 1.8) return 'no-change';
           return 'middle';
         };
         return (
