@@ -2,6 +2,7 @@ import React from 'react';
 import PT from 'prop-types';
 import styled from 'styled-components/macro';
 import axisDef from 'models/axis';
+import { getXY } from './helpers';
 
 const propTypes = {
   axes: PT.arrayOf(axisDef).isRequired,
@@ -9,15 +10,6 @@ const propTypes = {
   radius: PT.number.isRequired,
 };
 const defaultProps = {};
-
-
-const getXY = (r, radians) => {
-  const rads = radians + Math.PI / 2;
-  return [
-    -r * Math.cos(rads),
-    -r * Math.sin(rads),
-  ];
-};
 
 
 const Labels = ({ axes, angleSliceRadians, radius }) => {
@@ -39,14 +31,14 @@ const Labels = ({ axes, angleSliceRadians, radius }) => {
         };
         return (
           <LabelOuter key={name}>
-            <text
+            <Text
               x={x}
               y={y}
               textAnchor={getTextAnchor()}
               dominantBaseline={getDominantBaseline()}
             >
               {name}
-            </text>
+            </Text>
           </LabelOuter>
         );
       })}
@@ -60,3 +52,4 @@ export default Labels;
 
 const LabelsWrap = styled.g``;
 const LabelOuter = styled.g``;
+const Text = styled.text``;

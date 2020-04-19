@@ -13,6 +13,10 @@ const propTypes = {
     PT.bool,
     PT.number,
   ]).isRequired,
+  showLines: PT.bool.isRequired,
+  lineOffset: PT.number.isRequired,
+  lineOpacity: PT.number.isRequired,
+  lineStrokeDasharray: PT.string.isRequired,
 };
 const defaultProps = {};
 
@@ -21,6 +25,10 @@ const Svg = ({
   width,
   height,
   axesSeriesIndex,
+  showLines,
+  lineOffset,
+  lineOpacity,
+  lineStrokeDasharray,
 }) => {
   const padding = {
     top: 20,
@@ -35,19 +43,6 @@ const Svg = ({
   return (
     <SvgEl width={width} height={height}>
       <PadTransform transform={`translate(${padding.left} ${padding.top})`}>
-        <rect
-          width={innerWidth}
-          height={innerWidth}
-          stroke="lightblue"
-          fill="none"
-        />
-        <circle
-          r={innerWidth / 2}
-          cx={innerWidth / 2}
-          cy={innerWidth / 2}
-          stroke="lightgreen"
-          fill="none"
-        />
         <SeriesContainer>
           {series.map((data) => (
             <Series
@@ -59,7 +54,14 @@ const Svg = ({
           ))}
         </SeriesContainer>
         {axesSeriesIndex !== false && (
-          <Axes axes={series[axesSeriesIndex].axes} radius={radius} />
+          <Axes
+            axes={series[axesSeriesIndex].axes}
+            radius={radius}
+            showLines={showLines}
+            lineOffset={lineOffset}
+            lineOpacity={lineOpacity}
+            lineStrokeDasharray={lineStrokeDasharray}
+          />
         )}
       </PadTransform>
     </SvgEl>

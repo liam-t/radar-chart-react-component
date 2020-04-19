@@ -10,10 +10,21 @@ import Lines from './Lines';
 const propTypes = {
   axes: PT.arrayOf(axisDef).isRequired,
   radius: PT.number.isRequired,
+  showLines: PT.bool.isRequired,
+  lineOffset: PT.number.isRequired,
+  lineOpacity: PT.number.isRequired,
+  lineStrokeDasharray: PT.string.isRequired,
 };
 const defaultProps = {};
 
-const Axes = ({ axes, radius }) => {
+const Axes = ({
+  axes,
+  radius,
+  showLines,
+  lineOffset,
+  lineOpacity,
+  lineStrokeDasharray,
+}) => {
   const angleSliceRadians = (Math.PI * 2) / axes.length;
   const sharedProps = {
     axes,
@@ -23,7 +34,14 @@ const Axes = ({ axes, radius }) => {
   return (
     <AxesWrap>
       <Labels {...sharedProps} />
-      <Lines {...sharedProps} />
+      {showLines && (
+        <Lines
+          {...sharedProps}
+          lineOffset={lineOffset}
+          opacity={lineOpacity}
+          strokeDasharray={lineStrokeDasharray}
+        />
+      )}
     </AxesWrap>
   );
 };

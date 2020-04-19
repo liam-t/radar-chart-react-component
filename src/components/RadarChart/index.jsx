@@ -12,16 +12,28 @@ const propTypes = {
     PT.bool,
     PT.number,
   ]),
+  showLines: PT.bool,
+  lineOffset: PT.number,
+  lineOpacity: PT.number,
+  lineStrokeDasharray: PT.string,
 };
 const defaultProps = {
   name: '',
   axesSeriesIndex: 0,
+  showLines: true,
+  lineOffset: 0,
+  lineOpacity: 0.25,
+  lineStrokeDasharray: '5',
 };
 
 const RadarChart = ({
   name,
   series,
   axesSeriesIndex,
+  showLines,
+  lineOffset,
+  lineOpacity,
+  lineStrokeDasharray,
 }) => {
   return (
     <RadarChartWrap>
@@ -35,6 +47,10 @@ const RadarChart = ({
                 height={height}
                 series={series}
                 axesSeriesIndex={axesSeriesIndex}
+                showLines={showLines}
+                lineOffset={lineOffset}
+                lineOpacity={lineOpacity}
+                lineStrokeDasharray={lineStrokeDasharray}
               />
             )}
           </Inner>
