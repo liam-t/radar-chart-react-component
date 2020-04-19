@@ -18,13 +18,13 @@ const defaultProps = {
 };
 
 
-const getPoints = (axes, radius, scaleGen, angleSliceRadians) => (
+export const getPoints = (axes, radius, scaleGen, angleSliceRadians) => (
   axes.map(({ val, valDomain }, i) => (
     [angleSliceRadians * i, scaleGen(valDomain, [0, radius])(val)]
   ))
 );
 
-const getPath = (points) => lineRadial()(points);
+export const getPath = (points) => `${lineRadial()(points)}z`;
 
 
 const Series = ({ data, radius, color }) => {
