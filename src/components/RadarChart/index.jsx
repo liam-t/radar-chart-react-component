@@ -8,14 +8,20 @@ import Svg from './Svg';
 const propTypes = {
   name: PT.string,
   series: PT.arrayOf(serieDef).isRequired,
+  axesSeriesIndex: PT.oneOfType([
+    PT.bool,
+    PT.number,
+  ]),
 };
 const defaultProps = {
   name: '',
+  axesSeriesIndex: 0,
 };
 
 const RadarChart = ({
   name,
   series,
+  axesSeriesIndex,
 }) => {
   return (
     <RadarChartWrap>
@@ -28,6 +34,7 @@ const RadarChart = ({
                 width={width}
                 height={height}
                 series={series}
+                axesSeriesIndex={axesSeriesIndex}
               />
             )}
           </Inner>

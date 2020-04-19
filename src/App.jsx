@@ -15,7 +15,7 @@ function App() {
         },
         {
           name: 'speed',
-          val: 100,
+          val: 50,
           valDomain: [0, 100],
         },
         {
@@ -70,7 +70,11 @@ function App() {
   return (
     <AppWrap>
       <ChartWrap>
-        <RadarChart name="Radar Chart" series={data} />
+        <RadarChart
+          name="Radar Chart"
+          series={data}
+          axesSeriesIndex={0}
+        />
       </ChartWrap>
     </AppWrap>
   );
