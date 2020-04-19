@@ -10,12 +10,12 @@ function App() {
       axes: [
         {
           name: 'Strength',
-          val: 80,
+          val: 60,
           valDomain: [0, 100],
         },
         {
           name: 'Speed',
-          val: 80,
+          val: 100,
           valDomain: [0, 100],
         },
         {
@@ -25,12 +25,12 @@ function App() {
         },
         {
           name: 'Agility',
-          val: 80,
+          val: 65,
           valDomain: [0, 100],
         },
         {
           name: 'Intellegence',
-          val: 80,
+          val: 45,
           valDomain: [0, 100],
         },
       ],
@@ -55,4 +55,5 @@ const ChartWrap = styled.div`
   position: relative;
   width: 500px;
   height: 500px;
+  font-family: sans-serif;
 `;
