@@ -12,9 +12,11 @@ const propTypes = {
   data: serieDef.isRequired,
   radius: PT.number.isRequired,
   color: PT.string,
+  blendMode: PT.string,
 };
 const defaultProps = {
   color: 'lightblue',
+  blendMode: 'multiply',
 };
 
 
@@ -27,7 +29,12 @@ export const getPoints = (axes, radius, scaleGen, angleSliceRadians) => (
 export const getPath = (points) => `${lineRadial()(points)}z`;
 
 
-const Series = ({ data, radius, color }) => {
+const Series = ({
+  data,
+  radius,
+  color,
+  blendMode,
+}) => {
   const { axes } = data;
   const angleSliceRadians = (Math.PI * 2) / axes.length;
   const points = getPoints(axes, radius, scaleLinear, angleSliceRadians);
@@ -39,6 +46,7 @@ const Series = ({ data, radius, color }) => {
         d={path}
         color={color}
         transform={`translate(${radius} ${radius})`}
+        blendMode={blendMode}
       />
     </SeriesWrap>
   );
@@ -51,5 +59,5 @@ export default Series;
 const SeriesWrap = styled.g``;
 const AxesPath = styled.path`
   fill: ${(p) => p.color};
-  mix-blend-mode: multiply;
+  mix-blend-mode: ${(p) => p.blendMode};
 `;

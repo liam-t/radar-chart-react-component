@@ -19,6 +19,7 @@ const propTypes = {
   backgroundFill: PT.string,
   backgroundStroke: PT.string,
   backgroundStrokeWidth: PT.number,
+  seriesBlendMode: PT.string,
 };
 const defaultProps = {
   name: '',
@@ -30,6 +31,7 @@ const defaultProps = {
   backgroundFill: 'none',
   backgroundStroke: 'rgba(0, 0, 0, 0.2)',
   backgroundStrokeWidth: 1,
+  seriesBlendMode: 'multiply',
 };
 
 const RadarChart = ({
@@ -43,34 +45,34 @@ const RadarChart = ({
   backgroundFill,
   backgroundStroke,
   backgroundStrokeWidth,
-}) => {
-  return (
-    <RadarChartWrap>
-      {name && <Name>{name}</Name>}
-      <ResizeDetector handleWidth handleHeight>
-        {({ width, height }) => (
-          <Inner>
-            {width && (
-              <Svg
-                width={width}
-                height={height}
-                series={series}
-                axesSeriesIndex={axesSeriesIndex}
-                showLines={showLines}
-                lineOffset={lineOffset}
-                lineOpacity={lineOpacity}
-                lineStrokeDasharray={lineStrokeDasharray}
-                backgroundFill={backgroundFill}
-                backgroundStroke={backgroundStroke}
-                backgroundStrokeWidth={backgroundStrokeWidth}
-              />
-            )}
-          </Inner>
-        )}
-      </ResizeDetector>
-    </RadarChartWrap>
-  );
-};
+  seriesBlendMode,
+}) => (
+  <RadarChartWrap>
+    {name && <Name>{name}</Name>}
+    <ResizeDetector handleWidth handleHeight>
+      {({ width, height }) => (
+        <Inner>
+          {width && (
+            <Svg
+              width={width}
+              height={height}
+              series={series}
+              axesSeriesIndex={axesSeriesIndex}
+              showLines={showLines}
+              lineOffset={lineOffset}
+              lineOpacity={lineOpacity}
+              lineStrokeDasharray={lineStrokeDasharray}
+              backgroundFill={backgroundFill}
+              backgroundStroke={backgroundStroke}
+              backgroundStrokeWidth={backgroundStrokeWidth}
+              seriesBlendMode={seriesBlendMode}
+            />
+          )}
+        </Inner>
+      )}
+    </ResizeDetector>
+  </RadarChartWrap>
+);
 RadarChart.propTypes = propTypes;
 RadarChart.defaultProps = defaultProps;
 export default RadarChart;
