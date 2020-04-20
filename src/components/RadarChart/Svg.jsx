@@ -52,14 +52,6 @@ const Svg = ({
 
   return (
     <SvgEl width={width} height={height}>
-      <rect
-        x={0}
-        y={0}
-        width={width}
-        height={height}
-        fill="none"
-        stroke="green"
-      />
       <PadTransform transform={`translate(${padding.left} ${padding.top})`}>
         <Background
           axes={series[axesSeriesIndex].axes}

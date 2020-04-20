@@ -110,7 +110,9 @@ const absCss = css`
 const RadarChartWrap = styled.div`
   ${absCss};
 `;
-const Name = styled.p``;
+const Name = styled.p`
+  text-align: center;
+`;
 const Inner = styled.div`
   position: relative;
 `;
