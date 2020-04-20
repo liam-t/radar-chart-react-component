@@ -54,6 +54,7 @@ const AppWrap = styled.div``;
 const ChartWrap = styled.div`
   position: relative;
   width: 500px;
+  max-width: 100%;
   height: 500px;
   font-family: sans-serif;
 `;

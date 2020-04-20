@@ -4,8 +4,9 @@ import React from 'react';
 import PT from 'prop-types';
 import styled from 'styled-components/macro';
 import axisDef from 'models/axis';
-import Labels from './Labels';
+// import Labels from './Labels';
 import Lines from './Lines';
+import { getAngleSliceRadians } from './helpers';
 
 const propTypes = {
   axes: PT.arrayOf(axisDef).isRequired,
@@ -25,7 +26,7 @@ const Axes = ({
   lineOpacity,
   lineStrokeDasharray,
 }) => {
-  const angleSliceRadians = (Math.PI * 2) / axes.length;
+  const angleSliceRadians = getAngleSliceRadians(axes.length);
   const sharedProps = {
     axes,
     angleSliceRadians,
@@ -33,7 +34,7 @@ const Axes = ({
   };
   return (
     <AxesWrap>
-      <Labels {...sharedProps} />
+      {/* <Labels {...sharedProps} /> */}
       {showLines && (
         <Lines
           {...sharedProps}

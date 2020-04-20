@@ -12,6 +12,15 @@ const getXY = (radius, radians) => {
   ];
 };
 
+/**
+ *
+ * @param {number} segments number of increments to slice
+ * @return {number} segment size in radians
+ */
+const getAngleSliceRadians = (segments) => (Math.PI * 2) / segments;
+
+
 export {
   getXY,
+  getAngleSliceRadians,
 };

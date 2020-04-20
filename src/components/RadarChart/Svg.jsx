@@ -9,6 +9,12 @@ import Background from './Background';
 const propTypes = {
   width: PT.number.isRequired,
   height: PT.number.isRequired,
+  padding: PT.shape({
+    top: PT.number.isRequired,
+    bottom: PT.number.isRequired,
+    left: PT.number.isRequired,
+    right: PT.number.isRequired,
+  }).isRequired,
   series: PT.arrayOf(serieDef).isRequired,
   axesSeriesIndex: PT.oneOfType([
     PT.bool,
@@ -29,6 +35,7 @@ const Svg = ({
   series,
   width,
   height,
+  padding,
   axesSeriesIndex,
   showLines,
   lineOffset,
@@ -39,18 +46,20 @@ const Svg = ({
   backgroundStrokeWidth,
   seriesBlendMode,
 }) => {
-  const padding = {
-    top: 20,
-    bottom: 20,
-    left: 20,
-    right: 20,
-  };
   const innerWidth = width - padding.left - padding.right;
   // const innerHeight = height - padding.top - padding.bottom;
   const radius = innerWidth / 2;
 
   return (
     <SvgEl width={width} height={height}>
+      <rect
+        x={0}
+        y={0}
+        width={width}
+        height={height}
+        fill="none"
+        stroke="green"
+      />
       <PadTransform transform={`translate(${padding.left} ${padding.top})`}>
         <Background
           axes={series[axesSeriesIndex].axes}
