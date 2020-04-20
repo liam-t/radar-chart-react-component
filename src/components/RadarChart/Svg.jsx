@@ -28,6 +28,7 @@ const propTypes = {
   backgroundStroke: PT.string.isRequired,
   backgroundStrokeWidth: PT.number.isRequired,
   seriesBlendMode: PT.string.isRequired,
+  seriesOpacity: PT.number.isRequired,
 };
 const defaultProps = {};
 
@@ -45,6 +46,7 @@ const Svg = ({
   backgroundStroke,
   backgroundStrokeWidth,
   seriesBlendMode,
+  seriesOpacity,
 }) => {
   const innerWidth = width - padding.left - padding.right;
   // const innerHeight = height - padding.top - padding.bottom;
@@ -68,6 +70,7 @@ const Svg = ({
               color={data.color}
               radius={radius}
               blendMode={seriesBlendMode}
+              opacity={seriesOpacity}
             />
           ))}
         </SeriesContainer>

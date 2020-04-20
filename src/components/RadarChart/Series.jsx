@@ -3,21 +3,23 @@ import PT from 'prop-types';
 import styled from 'styled-components/macro';
 import serieDef from 'models/serie';
 import {
-  // polygonHull,
   scaleLinear,
   lineRadial,
 } from 'd3';
+import { transparentize } from 'polished';
 
 const propTypes = {
   data: serieDef.isRequired,
   radius: PT.number.isRequired,
-  color: PT.string,
-  blendMode: PT.string,
+  color: PT.string.isRequired,
+  blendMode: PT.string.isRequired,
+  opacity: PT.number.isRequired,
+  // d3Curve: PT.oneOfType([
+  //   PT.func,
+  //   PT.bool,
+  // ]).isRequired,
 };
-const defaultProps = {
-  color: 'lightblue',
-  blendMode: 'multiply',
-};
+const defaultProps = {};
 
 
 export const getPoints = (axes, radius, scaleGen, angleSliceRadians) => (
@@ -26,7 +28,11 @@ export const getPoints = (axes, radius, scaleGen, angleSliceRadians) => (
   ))
 );
 
-export const getPath = (points) => `${lineRadial()(points)}z`;
+export const getPath = (points, curve) => {
+  let lineGen = lineRadial();
+  if (curve) lineGen = lineGen.curve(curve);
+  return `${lineGen(points)}z`;
+};
 
 
 const Series = ({
@@ -34,11 +40,12 @@ const Series = ({
   radius,
   color,
   blendMode,
+  opacity,
 }) => {
-  const { axes } = data;
+  const { axes, d3Curve } = data;
   const angleSliceRadians = (Math.PI * 2) / axes.length;
   const points = getPoints(axes, radius, scaleLinear, angleSliceRadians);
-  const path = getPath(points);
+  const path = getPath(points, d3Curve);
 
   return (
     <SeriesWrap>
@@ -47,6 +54,7 @@ const Series = ({
         color={color}
         transform={`translate(${radius} ${radius})`}
         blendMode={blendMode}
+        theOpacity={opacity}
       />
     </SeriesWrap>
   );
@@ -58,6 +66,7 @@ export default Series;
 
 const SeriesWrap = styled.g``;
 const AxesPath = styled.path`
-  fill: ${(p) => p.color};
+  fill: ${(p) => transparentize(1 - p.theOpacity, p.color)};
+  stroke: ${(p) => p.color};
   mix-blend-mode: ${(p) => p.blendMode};
 `;

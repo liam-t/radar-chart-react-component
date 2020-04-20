@@ -21,6 +21,7 @@ const propTypes = {
   backgroundStroke: PT.string,
   backgroundStrokeWidth: PT.number,
   seriesBlendMode: PT.string,
+  seriesOpacity: PT.number,
   labelWidth: PT.number,
 };
 const defaultProps = {
@@ -34,6 +35,7 @@ const defaultProps = {
   backgroundStroke: 'rgba(0, 0, 0, 0.2)',
   backgroundStrokeWidth: 1,
   seriesBlendMode: 'multiply',
+  seriesOpacity: 0.2,
   labelWidth: 80,
 };
 
@@ -50,6 +52,7 @@ const RadarChart = ({
   backgroundStroke,
   backgroundStrokeWidth,
   seriesBlendMode,
+  seriesOpacity,
   labelWidth,
 }) => {
   const padding = {
@@ -80,6 +83,7 @@ const RadarChart = ({
                   backgroundStroke={backgroundStroke}
                   backgroundStrokeWidth={backgroundStrokeWidth}
                   seriesBlendMode={seriesBlendMode}
+                  seriesOpacity={seriesOpacity}
                 />
                 <LabelsHtml
                   radius={width / 2}
@@ -112,6 +116,8 @@ const RadarChartWrap = styled.div`
 `;
 const Name = styled.p`
   text-align: center;
+  font-weight: bold;
+  margin: 0;
 `;
 const Inner = styled.div`
   position: relative;
