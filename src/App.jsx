@@ -4,14 +4,14 @@ import RadarChart from 'components/RadarChart/index';
 import { curveCardinalClosed as d3Curve } from 'd3';
 
 function App() {
-  const data = [
+  const intitialData = [
     {
       d3Curve,
       name: 'series1',
       color: 'lightgreen',
       axes: [
         {
-          name: 'Wit',
+          name: 'Vim',
           val: 60,
           valDomain: [0, 100],
         },
@@ -21,12 +21,12 @@ function App() {
           valDomain: [0, 100],
         },
         {
-          name: 'Vim',
+          name: 'Spunk',
           val: 80,
           valDomain: [0, 100],
         },
         {
-          name: 'Sass',
+          name: 'Pith',
           val: 65,
           valDomain: [0, 100],
         },
@@ -69,6 +69,28 @@ function App() {
       ],
     },
   ];
+
+  const [data, setData] = React.useState(intitialData);
+
+  React.useEffect(() => {
+    const interval = setInterval(() => {
+      setData(intitialData.map((datum) => {
+        const { axes } = datum;
+        return {
+          ...datum,
+          axes: axes.map((axis) => ({
+            ...axis,
+            val: Math.floor(Math.random() * 100),
+          })),
+        };
+      }));
+    }, 2500);
+
+    return () => {
+      window.clearInterval(interval);
+    };
+  }, [intitialData]);
+
   return (
     <AppWrap>
       <ChartWrap>

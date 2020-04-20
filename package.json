@@ -7,12 +7,14 @@
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
     "d3": "^5.15.1",
+    "flubber": "^0.4.2",
     "polished": "^3.5.2",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-resize-detector": "^4.2.3",
     "react-scripts": "3.4.1",
+    "react-spring": "^8.0.27",
     "styled-components": "^5.1.0"
   },
   "scripts": {

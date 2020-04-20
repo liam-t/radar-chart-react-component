@@ -2,11 +2,10 @@ import React from 'react';
 import PT from 'prop-types';
 import styled from 'styled-components/macro';
 import serieDef from 'models/serie';
-import {
-  scaleLinear,
-  lineRadial,
-} from 'd3';
+import { scaleLinear, lineRadial } from 'd3';
 import { transparentize } from 'polished';
+import { animated } from 'react-spring';
+import Animator from './Animator';
 
 const propTypes = {
   data: serieDef.isRequired,
@@ -14,10 +13,6 @@ const propTypes = {
   color: PT.string.isRequired,
   blendMode: PT.string.isRequired,
   opacity: PT.number.isRequired,
-  // d3Curve: PT.oneOfType([
-  //   PT.func,
-  //   PT.bool,
-  // ]).isRequired,
 };
 const defaultProps = {};
 
@@ -49,13 +44,17 @@ const Series = ({
 
   return (
     <SeriesWrap>
-      <AxesPath
-        d={path}
-        color={color}
-        transform={`translate(${radius} ${radius})`}
-        blendMode={blendMode}
-        theOpacity={opacity}
-      />
+      <Animator path={path}>
+        {(animatedPath) => (
+          <AxesPath
+            d={animatedPath}
+            color={color}
+            transform={`translate(${radius} ${radius})`}
+            blendmode={blendMode}
+            theopacity={opacity}
+          />
+        )}
+      </Animator>
     </SeriesWrap>
   );
 };
@@ -65,8 +64,8 @@ Series.defaultProps = defaultProps;
 export default Series;
 
 const SeriesWrap = styled.g``;
-const AxesPath = styled.path`
-  fill: ${(p) => transparentize(1 - p.theOpacity, p.color)};
+const AxesPath = styled(animated.path)`
+  fill: ${(p) => transparentize(1 - p.theopacity, p.color)};
   stroke: ${(p) => p.color};
-  mix-blend-mode: ${(p) => p.blendMode};
+  mix-blend-mode: ${(p) => p.blendmode};
 `;
