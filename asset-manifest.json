@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.js": "/radar-chart/static/js/main.38a00252.chunk.js",
+    "main.js.map": "/radar-chart/static/js/main.38a00252.chunk.js.map",
+    "runtime-main.js": "/radar-chart/static/js/runtime-main.5ea7c174.js",
+    "runtime-main.js.map": "/radar-chart/static/js/runtime-main.5ea7c174.js.map",
+    "static/js/2.bec02b47.chunk.js": "/radar-chart/static/js/2.bec02b47.chunk.js",
+    "static/js/2.bec02b47.chunk.js.map": "/radar-chart/static/js/2.bec02b47.chunk.js.map",
+    "index.html": "/radar-chart/index.html",
+    "precache-manifest.d318df3b8cceb05541b02f59b916b31c.js": "/radar-chart/precache-manifest.d318df3b8cceb05541b02f59b916b31c.js",
+    "service-worker.js": "/radar-chart/service-worker.js",
+    "static/js/2.bec02b47.chunk.js.LICENSE.txt": "/radar-chart/static/js/2.bec02b47.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.5ea7c174.js",
+    "static/js/2.bec02b47.chunk.js",
+    "static/js/main.38a00252.chunk.js"
+  ]
+}
