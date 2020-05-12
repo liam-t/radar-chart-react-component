@@ -1,6 +1,6 @@
 {
   "name": "knifecrime-display",
-  "homepage": "https://liam-t.github.io/radar-chart",
+  "homepage": "https://liam-t.github.io/radar-chart-react-component/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
